@@ -15,8 +15,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ChooseLevelActivity" />
-        <activity android:name=".LevelActivity" />
+        <activity android:name=".LevelsActivity" />
+        <activity android:name=".TasksActivity" />
         <activity android:name=".TaskActivity"></activity>
     </application>
 

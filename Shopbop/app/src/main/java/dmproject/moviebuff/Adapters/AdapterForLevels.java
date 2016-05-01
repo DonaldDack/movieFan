@@ -1,18 +1,20 @@
-package dmproject.moviebuff;
+package dmproject.moviebuff.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
+
+import dmproject.moviebuff.LevelsActivity;
+import dmproject.moviebuff.Level;
+import dmproject.moviebuff.TasksActivity;
+import dmproject.moviebuff.R;
 
 /**
  * Created by Dmitry on 01.05.2016.
@@ -24,7 +26,7 @@ public class AdapterForLevels extends BaseAdapter {
     Context context;
     static int level;
 
-    AdapterForLevels(Context cntext, ArrayList<Level> lvels){
+    public AdapterForLevels(Context cntext, ArrayList<Level> lvels){
         levels = lvels;
         context = cntext;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -81,7 +83,7 @@ public class AdapterForLevels extends BaseAdapter {
         }
 
         Button button = (Button) view.findViewById(R.id.btnLvl);
-        if (ChooseLevelActivity.Points >= level.PointsToPass) {
+        if (LevelsActivity.Points >= level.PointsToPass) {
             button.setTag(level.Number);
             button.setOnClickListener(myClickListener);
             button.setText("" + level.Number);
@@ -99,8 +101,8 @@ public class AdapterForLevels extends BaseAdapter {
     View.OnClickListener myClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(context, LevelActivity.class);
-            ChooseLevelActivity.level = (int)v.getTag();
+            Intent intent = new Intent(context, TasksActivity.class);
+            LevelsActivity.level = (int)v.getTag();
             context.startActivity(intent);
         }
     };

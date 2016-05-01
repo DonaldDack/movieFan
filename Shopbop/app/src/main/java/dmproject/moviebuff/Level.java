@@ -14,8 +14,8 @@ import java.util.Map;
 public class Level {
 
     public int Number;//номер уровня
-    protected int PointsToPass;//очки нужные для открытия этого уровня
-    protected int PointForLevel;//очки заработанные на этом уровне
+    public int PointsToPass;//очки нужные для открытия этого уровня
+    public int PointForLevel;//очки заработанные на этом уровне
     protected int ImageNumber;//номер уровня в картинке
 
     public Level(int Numb){

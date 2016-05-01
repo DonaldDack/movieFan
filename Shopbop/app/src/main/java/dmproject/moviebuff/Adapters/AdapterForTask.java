@@ -1,7 +1,10 @@
-package dmproject.moviebuff;
+package dmproject.moviebuff.Adapters;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,29 +15,33 @@ import android.widget.ImageView;
 
 import java.util.ArrayList;
 
+import dmproject.moviebuff.R;
+import dmproject.moviebuff.Task;
+import dmproject.moviebuff.TaskActivity;
+
 /**
  * Created by Dmitry on 01.05.2016.
  */
-public class AdapterForTasks extends BaseAdapter {
+public class AdapterForTask extends BaseAdapter {
 
-    ArrayList<Task> tasks;
+    ArrayList<Drawable> drawables;
     LayoutInflater inflater;
     Context context;
 
-    AdapterForTasks(Context cntext, ArrayList<Task> task){
-        tasks = task;
+    public AdapterForTask(Context cntext, ArrayList<Drawable> res){
+        drawables = res;
         context = cntext;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
     public int getCount() {
-        return tasks.size();
+        return drawables.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return tasks.get(position);
+        return drawables.get(position);
     }
 
     @Override
@@ -42,26 +49,16 @@ public class AdapterForTasks extends BaseAdapter {
         return position;
     }
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
         if (view == null){
-            view = inflater.inflate(R.layout.task_view, parent, false);
+            view = inflater.inflate(R.layout.item, parent, false);
         }
 
-        Button button = (Button) view.findViewById(R.id.btnTasks);
-        button.setText("" + (position + 1));
-        button.setOnClickListener(myClickListener);
-
-
+        ImageView imageView = (ImageView) view.findViewById(R.id.imgCustomMain);
+        imageView.setBackground(drawables.get(position));
         return view;
     }
-
-    View.OnClickListener myClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(context, TaskActivity.class);
-            context.startActivity(intent);
-        }
-    };
 }

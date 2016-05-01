@@ -2,6 +2,7 @@ package dmproject.moviebuff;
 
 import android.content.Context;
 import android.util.Log;
+import android.util.Pair;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -19,6 +20,7 @@ import java.util.SortedMap;
 public class Levels {
 
     public ArrayList<Level> levels;
+    public int PointsForAllGame;
 
     public Levels(){
         levels = new ArrayList<>();
@@ -34,5 +36,13 @@ public class Levels {
         levels.add(new Level(10, 9));
         levels.add(new Level(11, 10));
         levels.add(new Level(12, 11));
+        PointsForAllGame = 0;
+    }
+
+    public Levels(Map<Integer, Integer> m){
+        levels = new ArrayList<>();
+        for (int i = 0; i < m.size(); ++i){
+            levels.add(new Level(i + 1, m.get(i + 1)));
+        }
     }
 }
