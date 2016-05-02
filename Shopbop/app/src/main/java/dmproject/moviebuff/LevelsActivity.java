@@ -8,9 +8,7 @@ import dmproject.moviebuff.Adapters.AdapterForLevels;
 
 public class LevelsActivity extends AppCompatActivity {
 
-    static public int Points = 5;
     GridView gridView;
-    static public int level;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

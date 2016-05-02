@@ -20,7 +20,7 @@ import java.util.SortedMap;
 public class Levels {
 
     public ArrayList<Level> levels;
-    public int PointsForAllGame;
+
 
     public Levels(){
         levels = new ArrayList<>();
@@ -36,7 +36,7 @@ public class Levels {
         levels.add(new Level(10, 9));
         levels.add(new Level(11, 10));
         levels.add(new Level(12, 11));
-        PointsForAllGame = 0;
+        Game.PointsForAllGame = 7;
     }
 
     public Levels(Map<Integer, Integer> m){

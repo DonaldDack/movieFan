@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,12 +25,15 @@ import dmproject.moviebuff.TaskActivity;
  */
 public class AdapterForTask extends BaseAdapter {
 
-    ArrayList<Drawable> drawables;
+    ArrayList<Integer> drawables;
     LayoutInflater inflater;
     Context context;
 
-    public AdapterForTask(Context cntext, ArrayList<Drawable> res){
+    public AdapterForTask(Context cntext, ArrayList<Integer> res){
         drawables = res;
+        for (int x : drawables){
+            Log.d("mylog", "" + x);
+        }
         context = cntext;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -49,7 +53,6 @@ public class AdapterForTask extends BaseAdapter {
         return position;
     }
 
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
@@ -58,7 +61,7 @@ public class AdapterForTask extends BaseAdapter {
         }
 
         ImageView imageView = (ImageView) view.findViewById(R.id.imgCustomMain);
-        imageView.setBackground(drawables.get(position));
+        imageView.setImageResource(drawables.get(position));
         return view;
     }
 }

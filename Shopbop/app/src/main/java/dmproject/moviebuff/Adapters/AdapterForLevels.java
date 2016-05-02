@@ -11,6 +11,7 @@ import android.widget.ImageView;
 
 import java.util.ArrayList;
 
+import dmproject.moviebuff.Game;
 import dmproject.moviebuff.LevelsActivity;
 import dmproject.moviebuff.Level;
 import dmproject.moviebuff.TasksActivity;
@@ -83,7 +84,7 @@ public class AdapterForLevels extends BaseAdapter {
         }
 
         Button button = (Button) view.findViewById(R.id.btnLvl);
-        if (LevelsActivity.Points >= level.PointsToPass) {
+        if (Game.PointsForAllGame >= level.PointsToPass) {
             button.setTag(level.Number);
             button.setOnClickListener(myClickListener);
             button.setText("" + level.Number);
@@ -102,7 +103,7 @@ public class AdapterForLevels extends BaseAdapter {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(context, TasksActivity.class);
-            LevelsActivity.level = (int)v.getTag();
+            Game.level = (int)v.getTag();
             context.startActivity(intent);
         }
     };

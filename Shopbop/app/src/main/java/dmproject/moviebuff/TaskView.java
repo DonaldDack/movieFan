@@ -2,10 +2,10 @@ package dmproject.moviebuff;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
+import android.util.Log;
+import android.widget.Toast;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 
 /**
@@ -13,30 +13,25 @@ import java.util.ArrayList;
  */
 public class TaskView extends Task {
 
-    public ArrayList<Drawable> resourses;
+    public ArrayList<Integer> resourses;
     public String solution;
     Context context;
 
     public TaskView(int NumbTsk, int lvl, Context contex) {
         super(NumbTsk, lvl);
-        resourses = getResourses();
-        context = contex;
-    }
 
-    public ArrayList<Drawable> getResourses() {
+        resourses = new ArrayList<>();
 
-        ArrayList<Drawable> res = new ArrayList<>();
-        for (int i = 0; i < 4; ++i) {
-                Drawable drawable = Drawable.createFromPath(getPath(i + 1));
-                res.add(drawable);
+        if (contex == null)
+            Log.d("mylog", "contex == null");
+        else
+            Log.d("mylog", "contex != null");
+
+        for (int i = 1; i < 5; ++i){
+            resourses.add(contex.getResources().getIdentifier("lvl" + LevelNum + "_" + NumbTsk + "_" + i, "drawable", "dmproject.moviebuff"));
         }
-
-            return res;
-
-    }
-
-    public String getPath(int i){
-        return Uri.parse("file:///C:\\Users\\Dmitry\\Documents\\GitHub\\movieFan\\Shopbop\\app\\src\\main\\assets\\" +
-                LevelNum +"_" + NumberTask + "_" + i + ".png").toString();
+        for (int x: resourses){
+            Log.d("mylog", "" + x);
+        }
     }
 }
