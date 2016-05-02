@@ -12,6 +12,7 @@ import android.widget.ImageView;
 
 import java.util.ArrayList;
 
+import dmproject.moviebuff.Game;
 import dmproject.moviebuff.R;
 import dmproject.moviebuff.Task;
 import dmproject.moviebuff.TaskActivity;
@@ -55,6 +56,7 @@ public class AdapterForTasks extends BaseAdapter {
 
         Button button = (Button) view.findViewById(R.id.btnTasks);
         button.setText("" + (position + 1));
+        button.setTag(position + 1);
         button.setOnClickListener(myClickListener);
 
 
@@ -65,6 +67,7 @@ public class AdapterForTasks extends BaseAdapter {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(context, TaskActivity.class);
+            Game.Task = (int)v.getTag();
             context.startActivity(intent);
         }
     };

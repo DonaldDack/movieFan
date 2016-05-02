@@ -17,9 +17,9 @@ public class LevelsActivity extends AppCompatActivity {
 
         gridView = (GridView) findViewById(R.id.gvLevels);
 
-        Levels levels = new Levels();
+        Game.levels = new Levels();
 
-        AdapterForLevels adapter = new AdapterForLevels(this, levels.levels);
+        AdapterForLevels adapter = new AdapterForLevels(this, Game.levels.levels);
 
         gridView.setAdapter(adapter);
 

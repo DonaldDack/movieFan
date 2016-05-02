@@ -7,12 +7,130 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
     tools:context="dmproject.moviebuff.TaskActivity">
 
-    <GridView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvPoints"
+            android:text=""
+            android:textSize="20sp"
+            android:layout_weight="1"
+            android:gravity="center"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvPointsForLevel"
+            android:text=""
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+
+    <GridView
+        android:layout_width="wrap_content"
+        android:layout_height="550sp"
         android:id="@+id/gvTask">
     </GridView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvAnswer"
+        android:text="введите ответ"
+        android:gravity="center_horizontal"
+        android:textSize="35dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="м"
+            android:onClick="btnWordsListener"
+            android:id="@+id/btn1"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="с"
+            android:onClick="btnWordsListener"
+            android:id="@+id/btn2"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="т"
+            android:onClick="btnWordsListener"
+            android:id="@+id/btn3"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="и"
+            android:onClick="btnWordsListener"
+            android:id="@+id/btn4"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="т"
+            android:onClick="btnWordsListener"
+            android:id="@+id/btn5"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="е"
+            android:onClick="btnWordsListener"
+            android:id="@+id/btn6"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="л"
+            android:onClick="btnWordsListener"
+            android:id="@+id/btn7"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="и"
+            android:onClick="btnWordsListener"
+            android:id="@+id/btn8"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="о"
+            android:onClick="btnWordsListener"
+            android:id="@+id/btn9"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ф"
+            android:onClick="btnWordsListener"
+            android:id="@+id/btn10"/>
+
+    </LinearLayout>
 
 </LinearLayout>
