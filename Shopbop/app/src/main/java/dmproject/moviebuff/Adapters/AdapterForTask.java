@@ -61,6 +61,7 @@ public class AdapterForTask extends BaseAdapter {
         }
 
         ImageView imageView = (ImageView) view.findViewById(R.id.imgCustomMain);
+        Log.d("mylog", "" + (context.getResources().getConfiguration().screenHeightDp));
         imageView.setImageResource(drawables.get(position));
         return view;
     }

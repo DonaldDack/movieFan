@@ -43,6 +43,7 @@ public class TaskActivity extends AppCompatActivity {
         gridView.setHorizontalSpacing(20);
 
         gridView.setVerticalSpacing(10);
+        
     }
 
     public void btnWordsListener(View v){
