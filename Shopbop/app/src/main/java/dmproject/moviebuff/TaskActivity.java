@@ -1,22 +1,20 @@
 package dmproject.moviebuff;
 
-import android.content.res.AssetManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
-import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.IOException;
-
-import dmproject.moviebuff.Adapters.AdapterForTask;
+import java.util.ArrayList;
 
 public class TaskActivity extends AppCompatActivity {
 
     TextView textViewAllPoints, textViewPointsForLevel;
+    ImageView imageView1, imageView2, imageView3, imageView4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,20 +28,23 @@ public class TaskActivity extends AppCompatActivity {
 
         Game.createAnswers();
 
-        GridView gridView = (GridView) findViewById(R.id.gvTask);
+        imageView2 = (ImageView)findViewById(R.id.image2);
+        imageView3 = (ImageView)findViewById(R.id.image3);
+        imageView4 = (ImageView)findViewById(R.id.image4);
+        imageView1 = (ImageView)findViewById(R.id.image1);
+
+        ArrayList<ImageView> imgList = new ArrayList<>(4);
+
+        imgList.add((ImageView) findViewById(R.id.image2));
+        imgList.add((ImageView)findViewById(R.id.image3));
+        imgList.add((ImageView)findViewById(R.id.image4));
+        imgList.add((ImageView)findViewById(R.id.image1));
 
         TaskView taskView = new TaskView(Game.Task, Game.level, TaskActivity.this);
 
-        AdapterForTask adapterForTask= new AdapterForTask(this, taskView.resourses);
-
-        gridView.setAdapter(adapterForTask);
-
-        gridView.setNumColumns(2);
-
-        gridView.setHorizontalSpacing(20);
-
-        gridView.setVerticalSpacing(10);
-        
+        for (int i = 0; i < 4; ++i){
+            imgList.get(i).setImageResource(taskView.resourses.get(i));
+        }
     }
 
     public void btnWordsListener(View v){
@@ -63,4 +64,6 @@ public class TaskActivity extends AppCompatActivity {
             textViewPointsForLevel.setText("" + Game.levels.levels.get(Game.level - 1).PointForLevel);
         }
     }
+
+
 }
