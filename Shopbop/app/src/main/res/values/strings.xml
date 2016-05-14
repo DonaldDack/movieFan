@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">Movie Buff</string>
     <string name="play">Play</string>
+    <string name="level_name">Уровень</string>
+
+    <string name="title_activity_main_game">MainGameActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -16,6 +16,9 @@ public class Game {
     static public void createAnswers(){
         answers = new ArrayList<>();
         String[] strings = new String[]{
+                "дедпул",
+                "зверополис",
+                 "трансформеры",
                 "мстители",
                 "призрак",
                 "зверополис",
@@ -23,8 +26,4 @@ public class Game {
         };
         answers.add(strings);
     }
-
-
-
-
 }
