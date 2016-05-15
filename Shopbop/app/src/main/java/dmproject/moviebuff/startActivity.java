@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 
 public class startActivity extends AppCompatActivity {
 
@@ -15,6 +16,7 @@ public class startActivity extends AppCompatActivity {
 
     public void clickToStart(View v){
         Intent intent = new Intent(this, LevelsActivity.class);
+        Game.saveName(((EditText)findViewById(R.id.edName)).getText().toString());
         startActivity(intent);
     }
 }

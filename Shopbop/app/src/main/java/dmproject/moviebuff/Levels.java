@@ -36,7 +36,7 @@ public class Levels {
         levels.add(new Level(10, 9));
         levels.add(new Level(11, 10));
         levels.add(new Level(12, 11));
-        Game.PointsForAllGame = 7;
+        Game.PointsForAllGame = 50;
     }
 
     public Levels(Map<Integer, Integer> m){

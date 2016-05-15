@@ -1,5 +1,8 @@
 package dmproject.moviebuff;
 
+import android.content.res.Resources;
+import android.widget.ImageView;
+
 import java.util.ArrayList;
 
 /**
@@ -10,20 +13,24 @@ public class Game {
     static public String name;
     static public int PointsForAllGame;
     static public int Task;
-    static public ArrayList<String[]> answers;
     static public Levels levels;
 
-    static public void createAnswers(){
-        answers = new ArrayList<>();
-        String[] strings = new String[]{
-                "дедпул",
-                "зверополис",
-                 "трансформеры",
-                "мстители",
-                "призрак",
-                "зверополис",
-                "Головоломка"
-        };
-        answers.add(strings);
+    static public int getTask(){
+        return Task < 1? 1: Task;
+    }
+
+    static public int getLevel(){
+        return level < 1? 1: level;
+    }
+
+    static public void saveName(String name){
+    }
+
+    static public void incTask() {
+        Task = (++Task)%12;
+    }
+
+    static public void decTask() {
+        Task = --Task%12;
     }
 }

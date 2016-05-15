@@ -15,7 +15,25 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/level_name"/>
+                android:text="Points: "/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:id="@+id/tvPoints"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PointsForLevel: "/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:id="@+id/tvPointsForLevel"/>
 
     </android.support.v7.widget.Toolbar>
 
@@ -28,31 +46,6 @@
         android:paddingTop="@dimen/activity_vertical_margin"
         android:orientation="vertical"
         >
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_weight="4">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/tvPoints"
-            android:text=""
-            android:textSize="20sp"
-            android:layout_weight="1"
-            android:gravity="center"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/tvPointsForLevel"
-            android:text=""
-            android:textSize="20sp"
-            android:gravity="center"
-            android:layout_weight="1"/>
-
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -71,8 +64,7 @@
             android:id="@+id/image2"
             android:layout_height="match_parent"
             android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:layout_marginLeft="15dp">
+            android:layout_weight="1">
         </ImageView>
 
     </LinearLayout>
@@ -95,8 +87,7 @@
             android:id="@+id/image4"
             android:layout_height="match_parent"
             android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:layout_marginLeft="15dp">
+            android:layout_weight="1">
         </ImageView>
 
     </LinearLayout>
@@ -123,43 +114,51 @@
         android:layout_weight="4">
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="м"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text=""
             android:onClick="btnWordsListener"
             android:id="@+id/btn1"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="с"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text=""
             android:onClick="btnWordsListener"
             android:id="@+id/btn2"
             android:layout_weight="1"/>
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="т"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text=""
             android:onClick="btnWordsListener"
             android:id="@+id/btn3"
             android:layout_weight="1"/>
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="и"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text=""
             android:onClick="btnWordsListener"
             android:id="@+id/btn4"
             android:layout_weight="1"/>
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="т"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text=""
             android:onClick="btnWordsListener"
             android:id="@+id/btn5"
+            android:layout_weight="1"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text=""
+            android:onClick="btnWordsListener"
+            android:id="@+id/btn6"
             android:layout_weight="1"/>
 
     </LinearLayout>
@@ -171,46 +170,113 @@
         android:layout_weight="4">
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="е"
-            android:onClick="btnWordsListener"
-            android:id="@+id/btn6"
-            android:layout_weight="1"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="л"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text=""
             android:onClick="btnWordsListener"
             android:id="@+id/btn7"
             android:layout_weight="1"/>
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="и"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text=""
             android:onClick="btnWordsListener"
             android:id="@+id/btn8"
             android:layout_weight="1"/>
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="о"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text=""
             android:onClick="btnWordsListener"
             android:id="@+id/btn9"
             android:layout_weight="1"/>
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ф"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text=""
             android:onClick="btnWordsListener"
             android:id="@+id/btn10"
             android:layout_weight="1"/>
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text=""
+            android:onClick="btnWordsListener"
+            android:id="@+id/btn11"
+            android:layout_weight="1"/>
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="DEL"
+            android:onClick="btnDelListener"
+            android:id="@+id/btnDel"
+            android:layout_weight="1" />
+
     </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="4">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="back"
+                android:onClick="btnBackListener"
+                android:id="@+id/btnBackTask"
+                android:layout_weight="1" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text=""
+                android:onClick="btnWordsListener"
+                android:id="@+id/btn13"
+                android:layout_weight="1"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text=""
+                android:onClick="btnWordsListener"
+                android:id="@+id/btn14"
+                android:layout_weight="1"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text=""
+                android:onClick="btnWordsListener"
+                android:id="@+id/btn15"
+                android:layout_weight="1"/>
+
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text=""
+                android:onClick="btnWordsListener"
+                android:id="@+id/btn16"
+                android:layout_weight="1"/>
+
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="forward"
+                android:onClick="btnForwardListener"
+                android:id="@+id/btnNextTask"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
 
 </LinearLayout>
 </LinearLayout>

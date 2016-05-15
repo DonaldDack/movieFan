@@ -22,16 +22,8 @@ public class TaskView extends Task {
 
         resourses = new ArrayList<>();
 
-        if (contex == null)
-            Log.d("mylog", "contex == null");
-        else
-            Log.d("mylog", "contex != null");
-
         for (int i = 1; i < 5; ++i){
             resourses.add(contex.getResources().getIdentifier("lvl" + LevelNum + "_" + NumbTsk + "_" + i, "drawable", "dmproject.moviebuff"));
-        }
-        for (int x: resourses){
-            Log.d("mylog", "" + x);
         }
     }
 }

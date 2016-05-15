@@ -16,21 +16,22 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:background="@drawable/button_settings"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="150dp"
         android:text="Movie Buff"
-        android:textSize="50sp"/>
+        android:textSize="50sp"
+        android:id="@+id/textName"/>
+
     <Button
         android:id="@+id/button_start"
-
         android:text="@string/play"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
         android:gravity="center"
-
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:background="@drawable/button_play"
@@ -38,9 +39,17 @@
         android:shadowDx="0"
         android:shadowDy="0"
         android:shadowRadius="0"
-        android:layout_marginTop="300dp"
-        android:layout_centerHorizontal="true"
-        android:onClick="clickToStart"/>
+        android:onClick="clickToStart"
+        android:layout_marginBottom="154dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/edName"
+        android:layout_below="@+id/textName"
+        android:text="EnterName"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

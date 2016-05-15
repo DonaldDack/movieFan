@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import dmproject.moviebuff.Game;
 import dmproject.moviebuff.LevelsActivity;
 import dmproject.moviebuff.Level;
+import dmproject.moviebuff.TaskActivity;
 import dmproject.moviebuff.TasksActivity;
 import dmproject.moviebuff.R;
 
@@ -102,7 +103,7 @@ public class AdapterForLevels extends BaseAdapter {
     View.OnClickListener myClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(context, TasksActivity.class);
+            Intent intent = new Intent(context, TaskActivity.class);
             Game.level = (int)v.getTag();
             context.startActivity(intent);
         }

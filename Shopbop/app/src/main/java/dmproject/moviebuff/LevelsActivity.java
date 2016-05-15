@@ -29,8 +29,6 @@ public class LevelsActivity extends AppCompatActivity {
 
         gridView.setVerticalSpacing(10);
 
-
-
     }
 
 }
