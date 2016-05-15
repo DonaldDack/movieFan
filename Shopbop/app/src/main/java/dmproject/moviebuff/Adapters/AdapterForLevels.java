@@ -105,6 +105,7 @@ public class AdapterForLevels extends BaseAdapter {
         public void onClick(View v) {
             Intent intent = new Intent(context, TaskActivity.class);
             Game.level = (int)v.getTag();
+            Game.Task = 1;
             context.startActivity(intent);
         }
     };

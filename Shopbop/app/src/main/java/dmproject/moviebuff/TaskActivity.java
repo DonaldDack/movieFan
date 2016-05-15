@@ -11,19 +11,24 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Stack;
 
 public class TaskActivity extends AppCompatActivity {
 
-    TextView textViewAllPoints, textViewPointsForLevel;
+    TextView textViewAllPoints, textViewPointsForLevel, textView;
     ImageView imageView1, imageView2, imageView3, imageView4;
     Bundle bundle;
     String answerTasks;
     ArrayList<Integer> btnArr;
     ArrayList<ImageView> imgList;
+    Stack<Integer> selectButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task);
+
+        selectButton =new Stack<>();
 
         imgList = new ArrayList<>(4);
 
@@ -53,6 +58,7 @@ public class TaskActivity extends AppCompatActivity {
         textViewAllPoints = (TextView) findViewById(R.id.tvPoints);
         textViewPointsForLevel = (TextView) findViewById(R.id.tvPointsForLevel);
         textViewAllPoints.setText("" + Game.PointsForAllGame);
+        textView = (TextView) findViewById(R.id.tvAnswer);
 
         createAnswer();
         createPictures();
@@ -60,11 +66,15 @@ public class TaskActivity extends AppCompatActivity {
     }
 
     public void btnWordsListener(View v){
-        TextView textView = (TextView) findViewById(R.id.tvAnswer);
-        if (TextUtils.equals(textView.getText().toString(), "введите ответ")){
+
+
+        if (selectButton.empty()){
             textView.setText("");
         }
-        textView.setText(textView.getText().toString() + ((Button) findViewById(v.getId())).getText().toString());
+        selectButton.push(v.getId());
+        Button button = (Button) findViewById(v.getId());
+        textView.setText(textView.getText().toString() + button.getText().toString());
+        button.setAlpha(0);
                 //Toast.makeText(this, answers[Game.Task - 1].toString(), Toast.LENGTH_SHORT).show();
 
         if (TextUtils.equals(textView.getText().toString(), answerTasks.toString())){
@@ -73,7 +83,6 @@ public class TaskActivity extends AppCompatActivity {
             Game.levels.levels.get(Game.level - 1).PointForLevel++;
             textViewAllPoints.setText("" + Game.PointsForAllGame);
             textViewPointsForLevel.setText("" + Game.levels.levels.get(Game.level - 1).PointForLevel);
-            textView.setText(R.string.enterAnswer);
             Game.incTask();
             createPictures();
             createAnswer();
@@ -106,6 +115,10 @@ public class TaskActivity extends AppCompatActivity {
                 answ += textView.getText().charAt(i);
 
         textView.setText(answ);
+        if (!selectButton.empty()){
+            Button button = (Button) findViewById(selectButton.pop());
+            button.setAlpha(1);
+        }
     }
 
     public void createPictures(){
@@ -123,6 +136,8 @@ public class TaskActivity extends AppCompatActivity {
             ((Button)findViewById(btnArr.get(i))).setText("go");
 */
         createTiredKeyBoard();
+        textView.setText(R.string.enterAnswer);
+
         for (int i = 0; i < answerTasks.length(); ++i){
             boolean flag = true;
             while(flag){
@@ -130,8 +145,7 @@ public class TaskActivity extends AppCompatActivity {
                 if (ind < 0) ind = -ind;
                 Button button = ((Button)findViewById(btnArr.get(ind)));
                 if (TextUtils.equals(button.getText().toString(), "")){
-                    button.setText(
-                            (answerTasks.charAt(i)+"").toString());
+                    button.setText((answerTasks.charAt(i)+"").toString());
                     flag = false;
                 }
             }
@@ -161,6 +175,8 @@ public class TaskActivity extends AppCompatActivity {
         for(int i =0;i < btnArr.size(); ++i){
             Button button = (Button)findViewById(btnArr.get(i));
             button.setText("");
+            button.setAlpha(1);
+            selectButton = new Stack<>();
         }
     }
 }

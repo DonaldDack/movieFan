@@ -27,10 +27,13 @@ public class Game {
     }
 
     static public void incTask() {
-        Task = (++Task)%12;
+        Task = (Task == 12? 1: (++Task)%13);
     }
 
     static public void decTask() {
-        Task = --Task%12;
+        if (Task == 1)
+            Task = 12;
+        else
+            --Task;
     }
 }
