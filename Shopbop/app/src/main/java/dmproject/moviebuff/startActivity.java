@@ -16,7 +16,7 @@ public class startActivity extends AppCompatActivity {
 
     public void clickToStart(View v){
         Intent intent = new Intent(this, LevelsActivity.class);
-        Game.saveName(((EditText)findViewById(R.id.edName)).getText().toString());
+        //Game.saveName(((EditText)findViewById(R.id.edName)).getText().toString());
         startActivity(intent);
     }
 }

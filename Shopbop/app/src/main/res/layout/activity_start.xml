@@ -40,16 +40,8 @@
         android:shadowDy="0"
         android:shadowRadius="0"
         android:onClick="clickToStart"
-        android:layout_marginBottom="154dp"
+        android:layout_marginBottom="82dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/edName"
-        android:layout_below="@+id/textName"
-        android:text="EnterName"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

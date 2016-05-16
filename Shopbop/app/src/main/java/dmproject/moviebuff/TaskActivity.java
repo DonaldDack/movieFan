@@ -3,9 +3,11 @@ package dmproject.moviebuff;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Stack;
 
-public class TaskActivity extends AppCompatActivity {
+public class TaskActivity extends AppCompatActivity implements View.OnTouchListener{
 
     TextView textViewAllPoints, textViewPointsForLevel, textView;
     ImageView imageView1, imageView2, imageView3, imageView4;
@@ -22,11 +24,15 @@ public class TaskActivity extends AppCompatActivity {
     ArrayList<Integer> btnArr;
     ArrayList<ImageView> imgList;
     Stack<Integer> selectButton;
+    LinearLayout mainLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task);
+
+        mainLayout = (LinearLayout) findViewById(R.id.mainLayout);
+        mainLayout.setOnTouchListener(this);
 
         selectButton =new Stack<>();
 
@@ -91,14 +97,14 @@ public class TaskActivity extends AppCompatActivity {
     }
 
 
-    public void btnForwardListener(View view) {
+    public void nextTask() {
         Game.incTask();
         createPictures();
         createAnswer();
         createKeyboard();
     }
 
-    public void btnBackListener(View view) {
+    public void previousTask() {
         Game.decTask();
         createPictures();
         createAnswer();
@@ -122,7 +128,6 @@ public class TaskActivity extends AppCompatActivity {
     }
 
     public void createPictures(){
-
         TaskView taskView = new TaskView(Game.getTask(), Game.level, TaskActivity.this);
 
         for (int i = 0; i < 4; ++i){
@@ -131,11 +136,8 @@ public class TaskActivity extends AppCompatActivity {
     }
 
     public void createKeyboard(){
-/*
-        for (int i = 0; i < 15; ++i)
-            ((Button)findViewById(btnArr.get(i))).setText("go");
-*/
         createTiredKeyBoard();
+
         textView.setText(R.string.enterAnswer);
 
         for (int i = 0; i < answerTasks.length(); ++i){
@@ -143,7 +145,7 @@ public class TaskActivity extends AppCompatActivity {
             while(flag){
                 int ind = (new Random().nextInt())%(btnArr.size() - 1);
                 if (ind < 0) ind = -ind;
-                Button button = ((Button)findViewById(btnArr.get(ind)));
+                    Button button = ((Button)findViewById(btnArr.get(ind)));
                 if (TextUtils.equals(button.getText().toString(), "")){
                     button.setText((answerTasks.charAt(i)+"").toString());
                     flag = false;
@@ -176,7 +178,28 @@ public class TaskActivity extends AppCompatActivity {
             Button button = (Button)findViewById(btnArr.get(i));
             button.setText("");
             button.setAlpha(1);
-            selectButton = new Stack<>();
         }
+        selectButton = new Stack<>();
+    }
+
+    public boolean onTouch(View view, MotionEvent event)
+    {
+        float fromPosition = 0;
+        switch (event.getAction())
+        {
+            case MotionEvent.ACTION_DOWN: // Пользователь нажал на экран, т.е. начало движения
+                // fromPosition - координата по оси X начала выполнения операции
+                fromPosition = event.getX();
+                break;
+            case MotionEvent.ACTION_UP: // Пользователь отпустил экран, т.е. окончание движения
+                float toPosition = event.getX();
+                if (fromPosition > toPosition)
+                    nextTask();
+                else if (fromPosition < toPosition)
+                    previousTask();
+            default:
+                break;
+        }
+        return true;
     }
 }

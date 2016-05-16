@@ -12,10 +12,8 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 
 import dmproject.moviebuff.Game;
-import dmproject.moviebuff.LevelsActivity;
 import dmproject.moviebuff.Level;
 import dmproject.moviebuff.TaskActivity;
-import dmproject.moviebuff.TasksActivity;
 import dmproject.moviebuff.R;
 
 /**
