@@ -84,14 +84,14 @@ public class AdapterForLevels extends BaseAdapter {
 
         Button button = (Button) view.findViewById(R.id.btnLvl);
         if (Game.PointsForAllGame >= level.PointsToPass) {
-            button.setTag(level.Number);
+            button.setTag(level.getNumber());
             button.setOnClickListener(myClickListener);
-            button.setText("" + level.Number);
+            button.setText("" + level.getNumber());
         }
         else{
             //button.setImageResource(R.drawable.blocked);
             //button.setBackgroundColor(context.getResources().getColor(R.color.colorRed));
-            button.setText("" + level.Number);
+            button.setText("" + level.getNumber());
             button.setTextColor(context.getResources().getColor(R.color.colorRed));
             }
 

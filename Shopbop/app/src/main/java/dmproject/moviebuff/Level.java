@@ -20,7 +20,7 @@ public class Level {
 
     public Level(int Numb){
         Number = Numb;
-        PointsToPass = Numb * 3;
+        PointsToPass = (Numb - 1) * 3;
         PointForLevel = 0;
     }
 
@@ -28,5 +28,9 @@ public class Level {
         Number = Numb;
         PointsToPass = Numb * 3;
         PointForLevel = pnt;
+    }
+
+    public int getNumber(){
+        return Number;
     }
 }

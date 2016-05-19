@@ -96,16 +96,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="4">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/tvAnswer"
-        android:text="введите ответ"
-        android:gravity="center_horizontal"
-        android:textSize="35dp"/>
-
+        android:id="@+id/AnswerLayout"
+        android:layout_weight="4"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
     </LinearLayout>
 
     <LinearLayout

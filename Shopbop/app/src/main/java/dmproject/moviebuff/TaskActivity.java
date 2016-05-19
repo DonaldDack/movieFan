@@ -1,10 +1,17 @@
 package dmproject.moviebuff;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.ButtonBarLayout;
 import android.text.TextUtils;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Transformation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -14,17 +21,20 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Stack;
+import java.util.zip.Inflater;
 
 public class TaskActivity extends AppCompatActivity implements View.OnTouchListener{
 
-    TextView textViewAllPoints, textViewPointsForLevel, textView;
-    ImageView imageView1, imageView2, imageView3, imageView4;
-    Bundle bundle;
-    String answerTasks;
+    TextView textViewAllPoints, textViewPointsForLevel;
+    //ImageView imageView1, imageView2, imageView3, imageView4;
+    String answerTasks, answerText;
     ArrayList<Integer> btnArr;
     ArrayList<ImageView> imgList;
     Stack<Integer> selectButton;
     LinearLayout mainLayout;
+    float fromPosition;
+    ArrayList<View> answerButtons;
+    int curButtonForAnswer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,66 +74,69 @@ public class TaskActivity extends AppCompatActivity implements View.OnTouchListe
         textViewAllPoints = (TextView) findViewById(R.id.tvPoints);
         textViewPointsForLevel = (TextView) findViewById(R.id.tvPointsForLevel);
         textViewAllPoints.setText("" + Game.PointsForAllGame);
-        textView = (TextView) findViewById(R.id.tvAnswer);
+        answerText = new String();
 
-        createAnswer();
-        createPictures();
-        createKeyboard();
+        createScreen();
     }
 
     public void btnWordsListener(View v){
 
+        if (curButtonForAnswer < answerButtons.size()){
 
-        if (selectButton.empty()){
-            textView.setText("");
-        }
-        selectButton.push(v.getId());
-        Button button = (Button) findViewById(v.getId());
-        textView.setText(textView.getText().toString() + button.getText().toString());
-        button.setAlpha(0);
-                //Toast.makeText(this, answers[Game.Task - 1].toString(), Toast.LENGTH_SHORT).show();
+            if (selectButton.empty()){
+            answerText = "";
+            }
 
-        if (TextUtils.equals(textView.getText().toString(), answerTasks.toString())){
-            Toast.makeText(this, "поздравляем!", Toast.LENGTH_SHORT).show();
-            Game.PointsForAllGame++;
-            Game.levels.levels.get(Game.level - 1).PointForLevel++;
-            textViewAllPoints.setText("" + Game.PointsForAllGame);
-            textViewPointsForLevel.setText("" + Game.levels.levels.get(Game.level - 1).PointForLevel);
-            Game.incTask();
-            createPictures();
-            createAnswer();
-            createKeyboard();
-        }
+            selectButton.push(v.getId());
+
+            Button button = (Button) findViewById(v.getId());
+
+            answerText += button.getText().toString();
+
+            button.setAlpha(0);
+            button.setClickable(false);
+
+            ((Button) answerButtons.get(curButtonForAnswer++)).setText(button.getText().toString());
+                    //Toast.makeText(this, answers[Game.Task - 1].toString(), Toast.LENGTH_SHORT).show();
+
+            if (TextUtils.equals(answerText, answerTasks.toString())){
+                Toast.makeText(this, "поздравляем!", Toast.LENGTH_SHORT).show();
+                Game.PointsForAllGame++;
+                Game.levels.levels.get(Game.level - 1).PointForLevel++;
+                textViewAllPoints.setText("" + Game.PointsForAllGame);
+                textViewPointsForLevel.setText("" + Game.levels.levels.get(Game.level - 1).PointForLevel);
+                Game.incTask();
+                createScreen();
+            }}
     }
 
 
     public void nextTask() {
         Game.incTask();
-        createPictures();
-        createAnswer();
-        createKeyboard();
+        createScreen();
     }
 
     public void previousTask() {
         Game.decTask();
-        createPictures();
-        createAnswer();
-        createKeyboard();
+        createScreen();
     }
 
     public void btnDelListener(View view) {
-        TextView textView = (TextView) findViewById(R.id.tvAnswer);
-        int length = textView.getText().toString().length();
+        int length = answerText.length();
         String answ = "";
 
         if (length > 0)
             for (int i = 0; i < length - 1; ++i)
-                answ += textView.getText().charAt(i);
+                answ += answerText.charAt(i);
 
-        textView.setText(answ);
+        answerText =answ;
+        if (curButtonForAnswer > 0)
+            ((Button) answerButtons.get(--curButtonForAnswer)).setText("");
+
         if (!selectButton.empty()){
             Button button = (Button) findViewById(selectButton.pop());
             button.setAlpha(1);
+            button.setClickable(true);
         }
     }
 
@@ -131,21 +144,28 @@ public class TaskActivity extends AppCompatActivity implements View.OnTouchListe
         TaskView taskView = new TaskView(Game.getTask(), Game.level, TaskActivity.this);
 
         for (int i = 0; i < 4; ++i){
+            AlphaAnimation alphaAnimation = new AlphaAnimation(1, 0);
+            alphaAnimation.setDuration(1000);
+            imgList.get(i).startAnimation(alphaAnimation);
             imgList.get(i).setImageResource(taskView.resourses.get(i));
+            alphaAnimation = new AlphaAnimation(0, 1);
+            alphaAnimation.setDuration(2000);
+            imgList.get(i).startAnimation(alphaAnimation);
         }
     }
 
     public void createKeyboard(){
         createTiredKeyBoard();
 
-        textView.setText(R.string.enterAnswer);
+        answerText = "";
 
         for (int i = 0; i < answerTasks.length(); ++i){
             boolean flag = true;
             while(flag){
                 int ind = (new Random().nextInt())%(btnArr.size() - 1);
                 if (ind < 0) ind = -ind;
-                    Button button = ((Button)findViewById(btnArr.get(ind)));
+                Button button = ((Button)findViewById(btnArr.get(ind)));
+                button.setClickable(true);
                 if (TextUtils.equals(button.getText().toString(), "")){
                     button.setText((answerTasks.charAt(i)+"").toString());
                     flag = false;
@@ -160,6 +180,7 @@ public class TaskActivity extends AppCompatActivity implements View.OnTouchListe
                 if (ind < 0)
                     ind = -ind;
                 Button button = ((Button)findViewById(btnArr.get(ind)));
+                button.setClickable(true);
                 if (TextUtils.equals(button.getText().toString(), "")){
                     int ind2 = new Random().nextInt() % 30;
                     if (ind2 < 0) ind2 =-ind2;
@@ -171,6 +192,40 @@ public class TaskActivity extends AppCompatActivity implements View.OnTouchListe
 
     public void createAnswer(){
         answerTasks = getResources().getStringArray(R.array.answers)[Game.getTask() - 1];
+        LinearLayout linearLayout = (LinearLayout)findViewById(R.id.AnswerLayout);
+        linearLayout.removeAllViewsInLayout();
+        linearLayout.setGravity(Gravity.CENTER);
+
+        answerButtons = new ArrayList<>();
+        curButtonForAnswer = 0;
+
+        String[] arrAnswer = answerTasks.split(" ");
+
+        if (arrAnswer.length > 1){
+            ArrayList<LinearLayout> linearLayouts = new ArrayList<>();
+            linearLayout.setOrientation(LinearLayout.VERTICAL);
+            answerTasks = "";
+            for (int i = 0; i < arrAnswer.length; ++i){
+                answerTasks += arrAnswer[i];
+                LinearLayout linearLayout1 = new LinearLayout(this);
+                linearLayout1.setGravity(Gravity.CENTER_HORIZONTAL);
+                for (int j = 0; j < arrAnswer[i].length(); ++j){
+                    Button button = new Button(this);
+                    answerButtons.add(button);
+                    linearLayout1.addView(button);
+                }
+                linearLayout.addView(linearLayout1);
+            }
+        }else {
+            linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+            for (int i = 0; i < answerTasks.length(); ++i) {
+                Button button = new Button(this);
+                answerButtons.add(button);
+                linearLayout.addView(button);
+            }
+        }
+
+
     }
 
     public void createTiredKeyBoard(){
@@ -184,22 +239,27 @@ public class TaskActivity extends AppCompatActivity implements View.OnTouchListe
 
     public boolean onTouch(View view, MotionEvent event)
     {
-        float fromPosition = 0;
         switch (event.getAction())
         {
             case MotionEvent.ACTION_DOWN: // Пользователь нажал на экран, т.е. начало движения
-                // fromPosition - координата по оси X начала выполнения операции
                 fromPosition = event.getX();
                 break;
             case MotionEvent.ACTION_UP: // Пользователь отпустил экран, т.е. окончание движения
                 float toPosition = event.getX();
-                if (fromPosition > toPosition)
+                if (fromPosition - toPosition > getResources().getConfiguration().screenWidthDp/10)
                     nextTask();
-                else if (fromPosition < toPosition)
+                    //Toast.makeText(TaskActivity.this, "" + (fromPosition - toPosition), Toast.LENGTH_SHORT).show();}
+                else if (toPosition - fromPosition > getResources().getConfiguration().screenWidthDp/10)
                     previousTask();
             default:
                 break;
         }
         return true;
+    }
+
+    public void createScreen(){
+        createPictures();
+        createAnswer();
+        createKeyboard();
     }
 }
