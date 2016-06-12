@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="dmproject.moviebuff.TaskActivity"
+    tools:context=".Activity.TaskActivity"
     android:id="@+id/mainLayout">
 
 
@@ -120,13 +120,8 @@
             android:id="@+id/btn1"
             android:layout_weight="1"
             android:textColor="#3019FF"
-            android:textSize="35sp"
-            android:background="@drawable/answer_button_litera"
-            android:shadowColor="#A8A8A8"
-            android:shadowDx="5"
-            android:shadowDy="6"
-            android:shadowRadius="2"
-            android:layout_margin="5sp"/>
+            android:layout_margin="2sp"
+            android:background="@drawable/answer_button_litera" />
 
         <Button
             android:layout_width="match_parent"
@@ -136,13 +131,8 @@
             android:id="@+id/btn2"
             android:layout_weight="1"
             android:textColor="#3019FF"
-            android:textSize="35sp"
             android:background="@drawable/answer_button_litera"
-            android:shadowColor="#A8A8A8"
-            android:shadowDx="5"
-            android:shadowDy="6"
-            android:layout_margin="5sp"
-            android:shadowRadius="2"/>
+            android:layout_margin="2sp" />
 
         <Button
             android:layout_width="match_parent"
@@ -152,13 +142,8 @@
             android:id="@+id/btn3"
             android:layout_weight="1"
             android:textColor="#3019FF"
-            android:textSize="35sp"
             android:background="@drawable/answer_button_litera"
-            android:shadowColor="#A8A8A8"
-            android:shadowDx="5"
-            android:shadowDy="6"
-            android:layout_margin="5sp"
-            android:shadowRadius="2"/>
+            android:layout_margin="2sp" />
 
         <Button
             android:layout_width="match_parent"
@@ -168,13 +153,8 @@
             android:id="@+id/btn4"
             android:layout_weight="1"
             android:textColor="#3019FF"
-            android:textSize="35sp"
             android:background="@drawable/answer_button_litera"
-            android:shadowColor="#A8A8A8"
-            android:shadowDx="5"
-            android:shadowDy="6"
-            android:layout_margin="5sp"
-            android:shadowRadius="2"/>
+            android:layout_margin="2sp" />
 
         <Button
             android:layout_width="match_parent"
@@ -184,13 +164,8 @@
             android:id="@+id/btn5"
             android:layout_weight="1"
             android:textColor="#3019FF"
-            android:textSize="35sp"
             android:background="@drawable/answer_button_litera"
-            android:shadowColor="#A8A8A8"
-            android:shadowDx="5"
-            android:shadowDy="6"
-            android:layout_margin="5sp"
-            android:shadowRadius="2"/>
+            android:layout_margin="2sp" />
 
         <Button
             android:layout_width="match_parent"
@@ -200,13 +175,8 @@
             android:id="@+id/btn6"
             android:layout_weight="1"
             android:textColor="#3019FF"
-            android:textSize="35sp"
             android:background="@drawable/answer_button_litera"
-            android:shadowColor="#A8A8A8"
-            android:shadowDx="5"
-            android:shadowDy="6"
-            android:layout_margin="5sp"
-            android:shadowRadius="2"/>
+            android:layout_margin="2sp" />
 
     </LinearLayout>
 
@@ -224,13 +194,8 @@
             android:id="@+id/btn7"
             android:layout_weight="1"
             android:textColor="#3019FF"
-            android:textSize="35sp"
             android:background="@drawable/answer_button_litera"
-            android:shadowColor="#A8A8A8"
-            android:shadowDx="5"
-            android:shadowDy="6"
-            android:layout_margin="5sp"
-            android:shadowRadius="2"/>
+            android:layout_margin="2sp" />
 
         <Button
             android:layout_width="match_parent"
@@ -240,13 +205,8 @@
             android:id="@+id/btn8"
             android:layout_weight="1"
             android:textColor="#3019FF"
-            android:textSize="35sp"
             android:background="@drawable/answer_button_litera"
-            android:shadowColor="#A8A8A8"
-            android:shadowDx="5"
-            android:shadowDy="6"
-            android:layout_margin="5sp"
-            android:shadowRadius="2"/>
+            android:layout_margin="2sp" />
 
         <Button
             android:layout_width="match_parent"
@@ -256,13 +216,8 @@
             android:id="@+id/btn9"
             android:layout_weight="1"
             android:textColor="#3019FF"
-            android:textSize="35sp"
             android:background="@drawable/answer_button_litera"
-            android:shadowColor="#A8A8A8"
-            android:shadowDx="5"
-            android:shadowDy="6"
-            android:layout_margin="5sp"
-            android:shadowRadius="2"/>
+            android:layout_margin="2sp" />
 
         <Button
             android:layout_width="match_parent"
@@ -272,13 +227,8 @@
             android:id="@+id/btn10"
             android:layout_weight="1"
             android:textColor="#3019FF"
-            android:textSize="35sp"
             android:background="@drawable/answer_button_litera"
-            android:shadowColor="#A8A8A8"
-            android:shadowDx="5"
-            android:shadowDy="6"
-            android:layout_margin="5sp"
-            android:shadowRadius="2"/>
+            android:layout_margin="2sp" />
 
         <Button
             android:layout_width="match_parent"
@@ -288,13 +238,8 @@
             android:id="@+id/btn11"
             android:layout_weight="1"
             android:textColor="#3019FF"
-            android:textSize="35sp"
             android:background="@drawable/answer_button_litera"
-            android:shadowColor="#A8A8A8"
-            android:shadowDx="5"
-            android:shadowDy="6"
-            android:layout_margin="5sp"
-            android:shadowRadius="2"/>
+            android:layout_margin="2sp" />
 
 
         <Button
@@ -305,13 +250,8 @@
             android:id="@+id/btnDel"
             android:layout_weight="1"
             android:textColor="#3019FF"
-            android:textSize="35sp"
             android:background="@drawable/answer_button_litera"
-            android:shadowColor="#A8A8A8"
-            android:shadowDx="5"
-            android:shadowDy="6"
-            android:layout_margin="5sp"
-            android:shadowRadius="2"/>
+            android:layout_margin="2sp" />
 
     </LinearLayout>
 
@@ -331,13 +271,8 @@
                 android:id="@+id/btn13"
                 android:layout_weight="1"
                 android:textColor="#3019FF"
-                android:textSize="35sp"
                 android:background="@drawable/answer_button_litera"
-                android:shadowColor="#A8A8A8"
-                android:shadowDx="5"
-                android:shadowDy="6"
-                android:shadowRadius="2"
-                android:layout_margin="5sp"/>
+                android:shadowRadius="2" />
 
             <Button
                 android:layout_width="match_parent"
@@ -347,13 +282,8 @@
                 android:id="@+id/btn14"
                 android:layout_weight="1"
                 android:textColor="#3019FF"
-                android:textSize="35sp"
                 android:background="@drawable/answer_button_litera"
-                android:shadowColor="#A8A8A8"
-                android:shadowDx="5"
-                android:shadowDy="6"
-                android:layout_margin="5sp"
-                android:shadowRadius="2"/>
+                android:layout_margin="2sp" />
 
             <Button
                 android:layout_width="match_parent"
@@ -363,13 +293,8 @@
                 android:id="@+id/btn15"
                 android:layout_weight="1"
                 android:textColor="#3019FF"
-                android:textSize="35sp"
                 android:background="@drawable/answer_button_litera"
-                android:shadowColor="#A8A8A8"
-                android:shadowDx="5"
-                android:shadowDy="6"
-                android:layout_margin="5sp"
-                android:shadowRadius="2"/>
+                android:layout_margin="2sp" />
 
 
             <Button
@@ -380,14 +305,30 @@
                 android:id="@+id/btn16"
                 android:layout_weight="1"
                 android:textColor="#3019FF"
-                android:textSize="35sp"
                 android:background="@drawable/answer_button_litera"
-                android:shadowColor="#A8A8A8"
-                android:shadowDx="5"
-                android:shadowDy="6"
-                android:layout_margin="5sp"
-                android:shadowRadius="2" />
-            
+                android:layout_margin="2sp" />
+
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="bck"
+                android:id="@+id/btnBack"
+                android:layout_weight="1"
+                android:textColor="#3019FF"
+                android:background="@drawable/answer_button_litera"
+                android:layout_margin="2sp"
+                android:onClick="btnBackListener"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="help"
+                android:id="@+id/btnQ"
+                android:layout_weight="1"
+                android:textColor="#3019FF"
+                android:background="@drawable/answer_button_litera"
+                android:layout_margin="2sp" />
 
         </LinearLayout>
 

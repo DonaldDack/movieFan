@@ -1,18 +1,10 @@
-package dmproject.moviebuff;
-
-import android.content.Context;
-import android.util.Log;
-import android.util.Pair;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.GridView;
-import android.widget.SimpleAdapter;
-import android.widget.Toast;
+package dmproject.moviebuff.Data;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.SortedMap;
+
+import dmproject.moviebuff.Data.Level;
+import dmproject.moviebuff.Game;
 
 /**
  * Created by Dmitry on 01.05.2016.

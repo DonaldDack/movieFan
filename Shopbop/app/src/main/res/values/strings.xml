@@ -2,6 +2,7 @@
     <string name="app_name">Movie Buff</string>
     <string name="play">Play</string>
     <string name="level_name">Уровень</string>
+    <string name="question">help</string>
 
     <string name="title_activity_main_game">MainGameActivity</string>
     <string name="dummy_button">Dummy Button</string>
@@ -14,12 +15,12 @@
             <item>интерны</item>
             <item>шрек</item>
             <item>кунгфупанда</item>
-            <item>игра престолов</item>
             <item>выживший</item>
             <item>сумерки</item>
             <item>звездные войны</item>
             <item>аватар</item>
             <item>титаник</item>
+            <item>игра престолов</item>
     </string-array>
     
     <string-array name="alphabet">
@@ -54,6 +55,4 @@
         <item>ю</item>
         <item>я</item>
     </string-array>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

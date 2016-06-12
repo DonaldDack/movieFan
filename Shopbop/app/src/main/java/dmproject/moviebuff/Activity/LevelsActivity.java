@@ -1,10 +1,12 @@
-package dmproject.moviebuff;
+package dmproject.moviebuff.Activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.GridView;
 
 import dmproject.moviebuff.Adapters.AdapterForLevels;
+import dmproject.moviebuff.Game;
+import dmproject.moviebuff.R;
 
 public class LevelsActivity extends AppCompatActivity {
 
@@ -17,13 +19,13 @@ public class LevelsActivity extends AppCompatActivity {
 
         gridView = (GridView) findViewById(R.id.gvLevels);
 
-        Game.levels = new Levels();
+       Game.fillVariablesFromDataBase();
 
         AdapterForLevels adapter = new AdapterForLevels(this, Game.levels.levels);
 
         gridView.setAdapter(adapter);
 
-        gridView.setNumColumns(3);
+        gridView.setNumColumns(2);
 
         gridView.setHorizontalSpacing(20);
 

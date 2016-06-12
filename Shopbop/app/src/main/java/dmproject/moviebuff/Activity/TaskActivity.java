@@ -1,17 +1,14 @@
-package dmproject.moviebuff;
+package dmproject.moviebuff.Activity;
 
-import android.content.Context;
+import android.content.ContentValues;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.ButtonBarLayout;
 import android.text.TextUtils;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
-import android.view.animation.Transformation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -21,7 +18,11 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Stack;
-import java.util.zip.Inflater;
+
+import dmproject.moviebuff.DBHelper;
+import dmproject.moviebuff.Game;
+import dmproject.moviebuff.R;
+import dmproject.moviebuff.Data.TaskView;
 
 public class TaskActivity extends AppCompatActivity implements View.OnTouchListener{
 
@@ -44,7 +45,7 @@ public class TaskActivity extends AppCompatActivity implements View.OnTouchListe
         mainLayout = (LinearLayout) findViewById(R.id.mainLayout);
         mainLayout.setOnTouchListener(this);
 
-        selectButton =new Stack<>();
+        selectButton = new Stack<>();
 
         imgList = new ArrayList<>(4);
 
@@ -101,12 +102,24 @@ public class TaskActivity extends AppCompatActivity implements View.OnTouchListe
 
             if (TextUtils.equals(answerText, answerTasks.toString())){
                 Toast.makeText(this, "поздравляем!", Toast.LENGTH_SHORT).show();
+                ContentValues values = new ContentValues();
+                values.put(DBHelper.NAME_COLLUMN_LEVEL, Game.level);
+                int fin = 1;
+                for (int i = 0; i < Game.levels.get(Game.level).FinishedTasks.size(); ++i)
+                   fin *= Game.levels.get(Game.level).FinishedTasks.get(i);
+                values.put(DBHelper.NAME_COLLUMN_FINISHED, fin * Game.Task);
+                Game.DataBase.update(DBHelper.NAME_TABLE, values, DBHelper.NAME_COLLUMN_LEVEL + "= ?", new String[]{Game.level + ""});
+                Game.levels.get(Game.level).FinishedTasks.add(Game.levels.get(Game.level).FreeTasks.get(Game.CurInd));
+                Game.levels.get(Game.level).FreeTasks.remove(Game.CurInd);
                 Game.PointsForAllGame++;
-                Game.levels.levels.get(Game.level - 1).PointForLevel++;
+                Game.levels.get(Game.level - 1).PointForLevel++;
                 textViewAllPoints.setText("" + Game.PointsForAllGame);
                 textViewPointsForLevel.setText("" + Game.levels.levels.get(Game.level - 1).PointForLevel);
-                Game.incTask();
-                createScreen();
+                if (Game.levels.get(Game.level).FreeTasks.size() == 0) {
+                    Game.setlevel(Game.level + 1);
+
+                }
+                nextTask();
             }}
     }
 
@@ -191,7 +204,7 @@ public class TaskActivity extends AppCompatActivity implements View.OnTouchListe
   /**/  }
 
     public void createAnswer(){
-        answerTasks = getResources().getStringArray(R.array.answers)[Game.getTask() - 1];
+        answerTasks = getResources().getStringArray(R.array.answers)[(Game.level - 1) * 6 + Game.getTask() - 1];
         LinearLayout linearLayout = (LinearLayout)findViewById(R.id.AnswerLayout);
         linearLayout.removeAllViewsInLayout();
         linearLayout.setGravity(Gravity.CENTER);
@@ -208,9 +221,12 @@ public class TaskActivity extends AppCompatActivity implements View.OnTouchListe
             for (int i = 0; i < arrAnswer.length; ++i){
                 answerTasks += arrAnswer[i];
                 LinearLayout linearLayout1 = new LinearLayout(this);
+                linearLayout1.setHorizontalGravity(Gravity.CENTER_HORIZONTAL);
                 linearLayout1.setGravity(Gravity.CENTER_HORIZONTAL);
                 for (int j = 0; j < arrAnswer[i].length(); ++j){
                     Button button = new Button(this);
+                    button.setBackgroundResource(R.drawable.button_answer_num);
+                    button.setWidth(getResources().getConfiguration().screenWidthDp/arrAnswer[i].length());
                     answerButtons.add(button);
                     linearLayout1.addView(button);
                 }
@@ -220,6 +236,8 @@ public class TaskActivity extends AppCompatActivity implements View.OnTouchListe
             linearLayout.setOrientation(LinearLayout.HORIZONTAL);
             for (int i = 0; i < answerTasks.length(); ++i) {
                 Button button = new Button(this);
+                button.setBackgroundResource(R.drawable.button_answer_num);
+                //button.setWidth(getResources().getConfiguration().screenWidthDp/answerTasks.length());
                 answerButtons.add(button);
                 linearLayout.addView(button);
             }
@@ -262,4 +280,15 @@ public class TaskActivity extends AppCompatActivity implements View.OnTouchListe
         createAnswer();
         createKeyboard();
     }
+
+    public void saveInstantState(){
+
+    }
+
+    public void btnBackListener(View view) {
+        Intent intent = new Intent(this, LevelsActivity.class);
+        startActivity(intent);
+    }
+
+
 }

@@ -1,4 +1,4 @@
-package dmproject.moviebuff;
+package dmproject.moviebuff.Data;
 
 import android.content.Context;
 import android.widget.GridView;
@@ -37,7 +37,7 @@ public class Level {
 
     public Level(int Numb, ArrayList<Integer> finishedTasks){
         Number = Numb;
-        PointsToPass = Numb * 5;
+        PointsToPass = (Numb - 1) * 5;
         PointForLevel = finishedTasks.size();
         FinishedTasks = finishedTasks;
         FreeTasks = createFreeTasks();
@@ -45,7 +45,7 @@ public class Level {
 
     private ArrayList<Integer> createFreeTasks() {
         ArrayList<Integer> arrayList = new ArrayList<>();
-        for (int i = 1; i < 6; ++i){
+        for (int i = 1; i < 7; ++i){
             if (!FinishedTasks.contains(i))
                 arrayList.add(i);
         }

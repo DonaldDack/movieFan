@@ -12,8 +12,8 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 
 import dmproject.moviebuff.Game;
-import dmproject.moviebuff.Level;
-import dmproject.moviebuff.TaskActivity;
+import dmproject.moviebuff.Data.Level;
+import dmproject.moviebuff.Activity.TaskActivity;
 import dmproject.moviebuff.R;
 
 /**
@@ -102,8 +102,7 @@ public class AdapterForLevels extends BaseAdapter {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(context, TaskActivity.class);
-            Game.level = (int)v.getTag();
-            Game.Task = 1;
+            Game.setlevel((int)v.getTag());
             context.startActivity(intent);
         }
     };
