@@ -105,10 +105,12 @@ public class TaskActivity extends AppCompatActivity implements View.OnTouchListe
                 ContentValues values = new ContentValues();
                 values.put(DBHelper.NAME_COLLUMN_LEVEL, Game.level);
                 int fin = 1;
-                for (int i = 0; i < Game.levels.get(Game.level).FinishedTasks.size(); ++i)
-                   fin *= Game.levels.get(Game.level).FinishedTasks.get(i);
-                values.put(DBHelper.NAME_COLLUMN_FINISHED, fin * Game.Task);
-                Game.DataBase.update(DBHelper.NAME_TABLE, values, DBHelper.NAME_COLLUMN_LEVEL + "= ?", new String[]{Game.level + ""});
+                //for (int i = 0; i < Game.levels.get(Game.level).FinishedTasks.size(); ++i)
+                 //  fin *= Game.levels.get(Game.level).FinishedTasks.get(i);
+                //values.put(DBHelper.NAME_COLLUMN_FINISHED, fin * Game.Task);
+                //Game.levels.get(Game.level).FinishedTasks.add(Game.getTask());//
+                values.put(DBHelper.NAME_COLLUMN_FINISHED, Game.getIntFromArray(Game.levels.get(Game.level).FinishedTasks));
+                Game.DataBase.update(DBHelper.NAME_TABLE, values, DBHelper.NAME_COLLUMN_LEVEL + "= ?", new String[]{(Game.level- 1) + ""});
                 Game.levels.get(Game.level).FinishedTasks.add(Game.levels.get(Game.level).FreeTasks.get(Game.CurInd));
                 Game.levels.get(Game.level).FreeTasks.remove(Game.CurInd);
                 Game.PointsForAllGame++;
@@ -117,7 +119,6 @@ public class TaskActivity extends AppCompatActivity implements View.OnTouchListe
                 textViewPointsForLevel.setText("" + Game.levels.levels.get(Game.level - 1).PointForLevel);
                 if (Game.levels.get(Game.level).FreeTasks.size() == 0) {
                     Game.setlevel(Game.level + 1);
-
                 }
                 nextTask();
             }}
@@ -287,8 +288,15 @@ public class TaskActivity extends AppCompatActivity implements View.OnTouchListe
 
     public void btnBackListener(View view) {
         Intent intent = new Intent(this, LevelsActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         startActivity(intent);
     }
 
+    @Override
+    public void onBackPressed(){
+        Intent intent = new Intent(this, LevelsActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        startActivity(intent);
+    }
 
 }

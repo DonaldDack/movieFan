@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -55,6 +56,11 @@ public class AdapterForLevels extends BaseAdapter {
         }
 
         Level level = (Level)getItem(position);
+        TextView textView = (TextView) view.findViewById(R.id.levelArray);
+        //textView.setText(textView.getText().toString() +  level.FinishedTasks.size());
+        for (int x = 0; x < level.FinishedTasks.size(); ++x){
+            textView.setText(textView.getText().toString() + " * " + level.FinishedTasks.get(x));
+        }
 
         for (int i = 0; i < 3; ++i){
 
@@ -74,13 +80,15 @@ public class AdapterForLevels extends BaseAdapter {
                     break;
             }
 
-            if (level.PointForLevel <= 1 + 4 * i)
+            if (level.PointForLevel < 1 + 2 * i)
                 ((ImageView) view.findViewById(atribute)).setImageResource(R.drawable.empty_star);
-            else if (level.PointForLevel <= 3 + 4 * i)
+            else if (level.PointForLevel < 2 + 2 * i)
                 ((ImageView) view.findViewById(atribute)).setImageResource(R.drawable.half_star);
             else
                 ((ImageView) view.findViewById(atribute)).setImageResource(R.drawable.full_star);
         }
+
+        TextView textViewToolBar = (TextView) view.findViewById(R.id.allPointsInLevels);
 
         Button button = (Button) view.findViewById(R.id.btnLvl);
         if (Game.PointsForAllGame >= level.PointsToPass) {

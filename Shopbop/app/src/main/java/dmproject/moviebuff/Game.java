@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -56,6 +57,8 @@ public class Game {
             for (int i = 1; i < 7; ++i)
                 Game.levels.add(new Level(i, new ArrayList<Integer>()));
         }
+
+        //fillpointsforlevel
     }
 
     private static ArrayList<Integer> getArrayFromInt(int finished) {
@@ -67,6 +70,19 @@ public class Game {
            if (finished % 11 == 0) arrayList.add(5);
            if (finished % 13 == 0) arrayList.add(6);
         return arrayList;
+    }
+
+    public static  int getIntFromArray(ArrayList<Integer> arrayList) {
+        int finished =  1;
+        for (int x : arrayList) {
+            if (x == 1) finished *= 2;
+            else if (x == 2) finished *= 3;
+            else if (x == 3) finished *= 5;
+            else if (x == 4) finished *= 7;
+            else if (x == 5) finished *= 11;
+            else if (x == 6) finished *= 13;
+        }
+        return finished;
     }
 
     static public int getTask(){

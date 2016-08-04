@@ -1,5 +1,6 @@
 package dmproject.moviebuff.Activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.GridView;
@@ -19,7 +20,7 @@ public class LevelsActivity extends AppCompatActivity {
 
         gridView = (GridView) findViewById(R.id.gvLevels);
 
-       Game.fillVariablesFromDataBase();
+       //Game.fillVariablesFromDataBase();
 
         AdapterForLevels adapter = new AdapterForLevels(this, Game.levels.levels);
 
@@ -31,6 +32,13 @@ public class LevelsActivity extends AppCompatActivity {
 
         gridView.setVerticalSpacing(10);
 
+    }
+
+    @Override
+    public void onBackPressed(){
+        Intent intent = new Intent(this, startActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        startActivity(intent);
     }
 
 }
